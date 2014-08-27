@@ -250,16 +250,12 @@ https://github.com/mroderick/PubSubJS
          *            PubSub.isEmpty(); // false
          */
         PubSub.isEmpty = function(){
-            var result = true;
-            for ( var m in messages ){
-                var message = messages[m];
-
+            var result = true, t, m, message;
+            for ( m in messages ){
                 if ( messages.hasOwnProperty( m )  ){
-                    for ( var t in message ){
+	            message = messages[m];
+                    for ( t in message ){
                         if (message.hasOwnProperty(t)){
-                            console.log(m);
-                            console.log(t);
-                            console.log(message[t]);
                             result = false;
                         }
                     }
