@@ -236,4 +236,37 @@ https://github.com/mroderick/PubSubJS
 
 		return result;
 	};
+
+        /* Public: checks if there are currently any subscriptions.
+         *
+         * Examples
+         *
+         *            // Example 1 - unsubscribing with a token
+         *            var token = PubSub.subscribe('mytopic', myFunc);
+         *            PubSub.isEmpty(); // false
+         *
+         *            // Example 2 - unsubscribing with a function
+         *            PubSub.clearAllSubscriptions();
+         *            PubSub.isEmpty(); // false
+         */
+        PubSub.isEmpty = function(){
+            var result = true;
+            for ( var m in messages ){
+                var message = messages[m];
+
+                if ( messages.hasOwnProperty( m )  ){
+                    for ( var t in message ){
+                        if (message.hasOwnProperty(t)){
+                            console.log(m);
+                            console.log(t);
+                            console.log(message[t]);
+                            result = false;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        };
+
 }));
