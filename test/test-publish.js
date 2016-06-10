@@ -194,6 +194,15 @@
 
 			clock.restore();
 			done();
+		},
+
+		"publish should throw an exception when the event is undefined or null" : function(){
+			assert.exception(function () {
+				PubSub.publish(undefined, 'data');
+			});
+			assert.exception(function () {
+				PubSub.publish(null, 'data');
+			});
 		}
 	});
 }(this));

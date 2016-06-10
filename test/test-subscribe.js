@@ -97,6 +97,15 @@
 			refute.exception(function(){
 				PubSub.publish(topic, TestHelper.getUniqueString());
 			});
+		},
+
+		"subscribe should throw an exception when the event is undefined or null" : function(){
+			assert.exception(function () {
+				PubSub.subscribe(undefined, function() {});
+			});
+			assert.exception(function () {
+				PubSub.subscribe(null, function() {});
+			});
 		}
 	});
 

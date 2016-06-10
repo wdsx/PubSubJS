@@ -116,6 +116,10 @@ https://github.com/mroderick/PubSubJS
 	}
 
 	function publish( message, data, sync, immediateExceptions ){
+		if (!message) {
+			throw "Publishing an empty message is not supported";
+		}
+
 		var deliver = createDeliveryFunction( message, data, immediateExceptions ),
 			hasSubscribers = messageHasSubscribers( message );
 
@@ -159,6 +163,10 @@ https://github.com/mroderick/PubSubJS
 	 *	you need to unsubscribe
 	**/
 	PubSub.subscribe = function( message, func ){
+		if (!message) {
+			throw "Subscribing to empty messages is not supported";
+		}
+
 		if ( typeof func !== 'function'){
 			return false;
 		}
